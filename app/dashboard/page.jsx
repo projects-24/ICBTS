@@ -29,7 +29,7 @@ export default function Home() {
       Axios.get(URI2 + "/regionalsummary")
       .then((res) => {
         let data 
-        data = res.data.dataPoints
+        data = res.data
         setdata(data)
         setdata_state(true)
         console.log(data)
@@ -61,7 +61,7 @@ export default function Home() {
                       <RowFlex alignItems="flex-start" justify="space-between" funcss={"padding"}>
                           <div>
                           <Text
-                              text="Ghana Statistical Service"
+                              text="Your Trade Matters"
                               funcss='headline'
                               color="dark200"
                               block

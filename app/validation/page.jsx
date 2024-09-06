@@ -28,17 +28,51 @@ const [outlier_year_month, setoutlier_year_month] = useState({'year' : 2023 ,  '
 const [active_tab, setactive_tab] = useState(1)
 
 const GetOutlier = (req) => {
-    Axios.get(URI + `/outlier/${req.year}/${req.month}`)
-    .then(res => {
-        let getDocs , data  
-        getDocs = res.data 
-        data = {
-            "data": getDocs,
-            "titles": ["Firm ID", "Establishment", "Interviewer" , "Year", "Currency", "Prev Month price" , "Current Month price" , "Price Diff", "percentage Change" ,"status" , "View" , "Validate"],
-            "fields": ["firm_id", "establishment_name", 'interviewer_name' ,  "selected_year","product_currency",  "previous_monthly_price" ,  "current_monthly_price", "price_difference"],
-          }
-        setoutlier_data(data)
-    })
+  if(active_tab == 1){
+    let data = {
+      "data": [
+        {
+          id: 1,
+          name: "John Doe",
+          team: "Alpha",
+          region: "North",
+          border: "JEWAY WHARF BORDER",
+          total_submission: 12,
+          percent_change:  "29%"
+        },
+        {
+          id: 2,
+          name: "Jane Smith",
+          team: "Bravo",
+          region: "East",
+          border: "JEWAY WHARF BORDER",
+          total_submission: 10,
+          percent_change:  "80%"
+        },
+        {
+          id: 3,
+          name: "Michael Johnson",
+          team: "Charlie",
+          region: "West",
+          border: "ELUBO BORDER",
+          total_submission: 8,
+          percent_change:  "49%"
+        },
+        {
+          id: 4,
+          name: "Emily Davis",
+          team: "Delta",
+          region: "South",
+          border: "ELUBO BORDER",
+          total_submission: 15,
+          percent_change: "29%"
+        }
+      ],
+      "titles": ["ID", "Name", "Team", "Region", "Border", "Total submission", "Status"],
+      "fields": ["id", "name", "team", "region", "border", "total_submission"]
+    }
+    setoutlier_data(data)
+  }
 }
 
 useEffect(() => {
@@ -185,86 +219,42 @@ return (
                 <Card
                 style={{gap:0}}
                     header={<div className={"padding bb"}>
-                        <RowFlex gap={1} justify="space-between">
-                            <div>
-                            <Text text={"Outlier"} block/>
-                         <RowFlex>
-                         <div>
-                         <Text 
-                         heading={"h3"} 
-                         text={` ${outlier_year_month.year} - ${outlier_year_month.month}`}
+                       <Text 
+                         heading={"h2"} 
+                         text={active_tab == 1 ? 'Submission' : 
+                          active_tab == 2 ? 'Dupicate Cases' : 
+                          active_tab == 3 ? 'Wrong Dates' : 
+                          active_tab == 4 ? 'High Order Specify' : 
+                          active_tab == 5 ? ' interviwers very high quantity' : 
+                          active_tab == 6 ? ' interviewers very high weights' : 
+                          active_tab == 7 ? 'Team Submissions' : ''
+                        
+                        }
                          bold 
                          block
-                         color="primary"
                          />
-                         </div>
-                         </RowFlex>
-                            </div>
-                            <div>
-                                <div>
-                                    <Text 
-                                    text="Month/Year*"
-                                    size="small"
-                                    bold 
-                                    color="dark200"
-                                    />
-                                </div>
-                                <Input
-                                type='month'
-                                bordered
-                                onChange={(e) => HandleOutlierQuery(e.target.value)}
-                                />
-                            </div>
-                        </RowFlex>
                     </div>}
-                    funcss='roundEdge'
                     xl
                     body={
                         <div className={""}>
                           {
                             outlier_data ?
                             <Table data={outlier_data}  funcss={"text-small"} pageSize={15}
-                              customColumns={[
-                                {
-                                  title: 'Actions',
-                                  render: (data) => (
-                                    <Text text={data.percent_change} size="minified" bg="dark200" funcss='padding-5 roundEdgeSmall' bold/>
-                                  ),
-                                } ,
+                              customColumns={
+                                [
                     {
                         title: 'Actions',
                         render: (data) => (
-                          <div className='circular_loader_container dark800'>
+                          <div className='circular_loader_container  dark800'>
                               <div 
                               className={`circular_loader ${parseInt(data.percent_change.slice(0 , data.percent_change.indexOf("%"))) < 50 ? "green" : parseInt(data.percent_change.slice(0 , data.percent_change.indexOf("%"))) <= 75 ? "primary" : "error"}`} 
                               style={{height:data.percent_change}}>  </div>
                            </div>
                         ),
                       }
-                      ,
-                      {
-                        title: 'Actions',
-                        render: (data) => (
-                          <Circle bg='primary' size={1.5} onClick={() => {
-                            setselected_data(data)
-                            setviewModal(true)
-                          }}>
-                            <PiEye />
-                          </Circle>
-                        ),
-                      }
-                      ,
-                      {
-                        title: 'Actions',
-                        render: (data) => (
-                          <Circle bg='primary' size={1.5} onClick={() => {
-  
-                          }}>
-                            <PiCheck />
-                          </Circle>
-                        ),
-                      }
-                  ]}  
+                   
+                  ]
+                }  
                             
                             />
                             : <div className='height-400 dark600 skeleton  padding-50' />
