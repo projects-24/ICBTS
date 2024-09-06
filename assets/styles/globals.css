@@ -1,0 +1,47 @@
+:root{
+    --primary:#291672;
+}
+*{
+    font-family: var(--font-font);
+}
+
+.circular_loader_container{
+    width: 25px;
+    height: 25px;
+    position: relative;
+    border-radius: 50%;
+    overflow: hidden;
+}
+.circular_loader{
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+.headline{
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 15%;
+    color:var(--primary) !important;
+    font-weight: bold;
+}
+.tab{
+    text-transform: uppercase;
+    font-size: 0.6rem;
+    font-weight: bold;
+    border-bottom: 0.2rem solid #F1F1F1;
+    padding: 2rem 0 0.5rem 0;
+    cursor: pointer;
+}
+.tab.active{
+    border-bottom: 0.2rem solid var(--primary);
+}
+.borderLeftPrimary{
+    border-left: 0.5rem solid var(--primary);
+}
+.borderLeftSuccess{
+    border-left: 0.5rem solid var(--success);
+}
+.borderLeftError{
+    border-left: 0.5rem solid var(--error);
+}
