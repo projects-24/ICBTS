@@ -63,8 +63,8 @@ const Navigation = ({title , active}) => {
         <div>
             <AppBar
                 left={<RowFlex gap={1}>
-                    <img src="/gss.png" className='height-60' alt="" />
-                    <img src="/logo.jpeg" className='height-60' alt="" />
+                    <img src="/gss.png" className='height-70' alt="" />
+                    <img src="/logo.jpg" className='height-70' alt="" />
                 </RowFlex>}
                 right={<Button text="SIGN OUT" endIcon={<PiSignOut />}  bg="error600" outlined rounded   onClick={SignOut}/>}
                 sideBar
