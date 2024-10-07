@@ -83,7 +83,7 @@ const Navigation = ({title , active}) => {
                             {
                                 user && <>
                                 <div>
-                                <Text text={user.username} uppercase size="small" />
+                                <Text text={"Management"} uppercase size="small" />
                                 <Text text={user.role} size="small" block />
                             </div>
                                 </>
