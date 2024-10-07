@@ -31,22 +31,10 @@ const [gender_data, setgender_data] = useState(null)
 
 const [total_records_year_month, settotal_records_year_month] = useState({'year' : 2024 ,  'month' : 10})
 const [transport_summary, settransport_summary] = useState(null)
+const [trade_direction, settrade_direction] = useState('')
 
 
 
-const GetReaderByMonth = (req) => {
-    Axios.get(URI + `/readerbymonth/${req.year}/${req.month}`)
-    .then(res => {
-        let getDocs , data  
-        getDocs = res.data 
-        data = {
-            "data": getDocs,
-            "titles": [ "Interviewer ID", "Interviewer", "Month", "Year" , "Submitted" ],
-            "fields": ["interviewer_id", 'interviewer_name' , "month", "fp01y" , "records_submitted"],
-          }
-        setreader_by_month_data(data)
-    })
-}
 const GetGender = (req) => {
     Axios.get(URI2 + `/gender`)
     .then(res => {
@@ -68,39 +56,28 @@ const GetTransportSummary = (req) => {
         getDocs = res.data 
         console.log(getDocs)
         settransport_summary(getDocs)
+        GetTradeDirection()
     })
 }
+
+const GetTradeDirection = () => {
+    Axios.get(URI2 + `/tradedirection`)
+    .then(res => {
+        let getDocs , data  
+        getDocs = res.data 
+        data = getDocs
+        settrade_direction(data)
+        console.log(data)
+
+    })
+}
+
 
 useEffect(() => {
     GetGender(productionstatus_year_month)
-    GetReaderByMonth(reader_year_month)
 }, [])
 
 
-
-const HandleReaderQuery = (year_month) => {
-    let year , month 
-    year = year_month.slice(0 , year_month.indexOf("-")) 
-    month = year_month.slice(-2) 
-    setreader_year_month({year , month})
-    new Promise((resolve, reject) => {
-        setreader_by_month_data(null)
-        resolve()
-    })
-    .then(res =>  GetReaderByMonth({'year' : year ,  'month' : month}))
-
-}
-const HandleProductionQuery = (year_month) => {
-    let year , month 
-    year = year_month.slice(0 , year_month.indexOf("-")) 
-    month = year_month.slice(-2) 
-    setproductionstatus_year_month({year , month})
-    new Promise((resolve, reject) => {
-        setgender_data(null)
-        resolve()
-    })
-    .then(res =>  GetGender({'year' : year ,  'month' : month}))
-}
 const HandleAllRecordsQuery = (year_month) => {
     let year , month 
     year = year_month.slice(0 , year_month.indexOf("-")) 
@@ -394,18 +371,10 @@ return (
                             body={
                                 <div className={"padding-20 height-300-min"}>
                                     {
-                                
-                                    <Chart title={"Heading One"} data={[
-                                        {
-                                            "y": 1771,
-                                            "label": "Imports"
-                                        },
-                                        {
-                                            "y": 55,
-                                            "label": "Exports"
-                                        }
-                                    ]} id={"p1"}  height={"220px"}/>
-                                    }
+                                  trade_direction &&
+                                    <Chart title={"Heading One"} data={trade_direction || []} id={'trade_direction'} />
+
+                            }
                                 </div>
                             }
 
