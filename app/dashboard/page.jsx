@@ -102,7 +102,7 @@ useEffect(() => {
                             uppercase 
                             />
                             <Text 
-                            text='00:00'
+                            text='00:05'
                             uppercase
                             block 
                             heading='h2' 
@@ -182,7 +182,7 @@ useEffect(() => {
                                 <RowFlex gap={1} funcss='padding-20' alignItems="flex-start">
                                     <Div content={<PiTrash size={15} className='text-dark' />} funcss={"central roundEdge  dark800"} raised height="2.5rem" width='2.5rem' />
                                     <Div>
-                                        <Text funcss='headline' text={"Rejected by Supervisor"} size='smaller' color='dark400' block bold />
+                                        <Text funcss='headline' text={"Cases with errors"} size='smaller' color='dark400' block bold />
                                         <RowFlex gap={0.5}>
                                             <Text heading='h3' text={dashboard_data.CasesWithErrors} color='dark200' />
                                           

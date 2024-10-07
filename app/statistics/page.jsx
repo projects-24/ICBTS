@@ -23,13 +23,13 @@ const Statistics = ()=>{
 
 
 const [reader_by_month_data, setreader_by_month_data] = useState(null)
-const [reader_year_month, setreader_year_month] = useState({'year' : 2023 ,  'month' : 12})
+const [reader_year_month, setreader_year_month] = useState({'year' : 2024 ,  'month' : 10})
 
 
-const [productionstatus_year_month, setproductionstatus_year_month] = useState({'year' : 2023 ,  'month' : 12})
+const [productionstatus_year_month, setproductionstatus_year_month] = useState({'year' : 2024 ,  'month' : 10})
 const [gender_data, setgender_data] = useState(null)
 
-const [total_records_year_month, settotal_records_year_month] = useState({'year' : 2023 ,  'month' : 12})
+const [total_records_year_month, settotal_records_year_month] = useState({'year' : 2024 ,  'month' : 10})
 const [transport_summary, settransport_summary] = useState(null)
 
 
