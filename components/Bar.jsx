@@ -5,12 +5,12 @@ import Grid from "funuicss/ui/grid/Grid"
 import Col from "funuicss/ui/grid/Col"
 import RowFlex from "funuicss/ui/specials/RowFlex"
 import Text from "funuicss/ui/text/Text"
-function MainChart({id, data}) {
+function Bar_Chart({id, data}) {
 
  
     useEffect(() => {
 
-        var chart = new CanvasJSReact.Chart("chartContainer", {
+        var chart = new CanvasJSReact.Chart(id ? id :  "bar_id", {
             animationEnabled: true,
             theme: "light2", // "light1", "light2", "dark1", "dark2"
             title: {
@@ -20,7 +20,7 @@ function MainChart({id, data}) {
                 title: "",
             },
             axisX: {
-                title: "Regions"
+                title: ""
             },
             data: [{
                 type: "column",
@@ -34,8 +34,8 @@ function MainChart({id, data}) {
 
 
     return (
-        <div>
-            <div id={id ? id :  "chartContainer"} style={{ height: '250px', width: '100%' }}></div>
+        <div >
+            <div id={id ? id :  "bar_id"} style={{ height: '250px', width: '100%' }}></div>
             <Grid funcss="padding bt central">
 
                 {
@@ -54,4 +54,4 @@ function MainChart({id, data}) {
     )
 }
 
-export default MainChart
+export default Bar_Chart

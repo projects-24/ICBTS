@@ -197,7 +197,7 @@ return (
               Submission
             </div>
             <div className={active_tab == 2 ? "active tab" : 'tab'} onClick={() => setactive_tab(2)}>
-              Dupicate Cases
+              Duplicate Cases
             </div>
             <div className={active_tab == 3 ? "active tab" : 'tab'} onClick={() => setactive_tab(3)}>
               Wrong Dates
