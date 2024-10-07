@@ -64,7 +64,6 @@ return (
             <div className={active_tab == 1 ? "active tab" : 'tab'} onClick={() => setactive_tab(1)}>
               Submission
             </div>
-            */}
             {/* <div className={active_tab == 6 ? "active tab" : 'tab'} onClick={() => setactive_tab(6)}>
            very high weights
             </div> */}
