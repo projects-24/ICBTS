@@ -64,12 +64,12 @@ return (
             <div className={active_tab == 1 ? "active tab" : 'tab'} onClick={() => setactive_tab(1)}>
               Submission
             </div>
-            <div className={active_tab == 4 ? "active tab" : 'tab'} onClick={() => setactive_tab(4)}>
+            {/* <div className={active_tab == 4 ? "active tab" : 'tab'} onClick={() => setactive_tab(4)}>
             High Order Specify
             </div>
             <div className={active_tab == 5 ? "active tab" : 'tab'} onClick={() => setactive_tab(5)}>
             very high quantity
-            </div>
+            </div> */}
             {/* <div className={active_tab == 6 ? "active tab" : 'tab'} onClick={() => setactive_tab(6)}>
            very high weights
             </div> */}
