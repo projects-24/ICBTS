@@ -120,7 +120,7 @@ export default function Home() {
     
          <div className="section">
            <Button
-           text={"Let's go"}
+           text={"Login Account"}
            raised
            fullWidth
            bg='primary'
