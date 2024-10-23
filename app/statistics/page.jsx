@@ -19,6 +19,9 @@ import Input from 'funuicss/ui/input/Input'
 import RowFlex from 'funuicss/ui/specials/RowFlex'
 import { PiEye } from 'react-icons/pi';
 import Circle from "funuicss/ui/specials/Circle"
+import Div from "funuicss/ui/div/Div"
+import {PiArrowDown, PiArrowUp, PiUsersDuotone,  PiVoicemailDuotone} from 'react-icons/pi'
+
 const Statistics = ()=>{
 
 
@@ -50,7 +53,7 @@ const GetGender = (req) => {
 
 
 const GetTransportSummary = (req) => {
-    Axios.get(URI2 + `/transportsummary`)
+    Axios.get(URI2 + `/meansoftransport`)
     .then(res => {
         let getDocs , data  
         getDocs = res.data 
@@ -61,7 +64,7 @@ const GetTransportSummary = (req) => {
 }
 
 const GetTradeDirection = () => {
-    Axios.get(URI2 + `/tradedirection`)
+    Axios.get(URI2 + `/directiontrade`)
     .then(res => {
         let getDocs , data  
         getDocs = res.data 
@@ -93,6 +96,25 @@ return (
         <div>
             <Navigation title={"Statistics"} active={2}/>
             <MainContent>
+                <div className='row'>
+                {/* <Col sm={12} md={6} lg={3} funcss='padding' >
+                        <Card
+                            xl
+                            funcss='hover-up borderLeftPrimary'
+                            body={
+                                <RowFlex gap={1} funcss='padding-20' alignItems="flex-start">
+                                    <Div content={<PiUsersDuotone size={15} className='text-dark' />} funcss={"central roundEdge  dark800"} raised height="2.5rem" width='2.5rem' />
+                                    <Div>
+                                        <Text funcss='headline' text={"Total Cases"} size='smaller' color='dark400' block bold />
+                                        <RowFlex gap={0.5}>
+                                            <Text heading='h3' text={0} color='dark200' />
+                                        </RowFlex>
+                                    </Div>
+                                </RowFlex>
+                            }
+                        />
+                    </Col> */}
+                </div>
                 <Grid>
                     <Col sm={12} md={12} lg={12} funcss={"padding"}>
                           <Card
