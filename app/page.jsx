@@ -16,7 +16,7 @@ import RowFlex from 'funuicss/ui/specials/RowFlex';
 
 import { SaveUser } from '@/functions/Auth'
 import Axios from 'axios'
-import { URI } from '@/functions/endpoint'
+import { URI , URI2 } from '@/functions/endpoint'
 
 export default function Home() {
 
@@ -24,7 +24,7 @@ export default function Home() {
 
     const [api_online, setapi_online] = useState(false)
   useEffect(() => {
-      Axios.get(URI)
+      Axios.get(URI2)
         .then((res) => {
           setapi_online(true)
         })
