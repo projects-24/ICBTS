@@ -39,7 +39,7 @@ export default function Home() {
         console.log(err)
         setdata_state ( () => !data_state )
       })
-    }, [data_state])
+    }, [])
 
 
     const [border_summary, setborder_summary] = useState(null)
@@ -58,7 +58,7 @@ useEffect(() => {
     console.log(err)
     setborder_summary_state ( () => !border_summary_state )
   })
-}, [border_summary_state])
+}, [d])
 
     const [dashboard_data, setdashboard_data] = useState(null)
     useEffect(() => {
