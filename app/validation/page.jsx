@@ -69,7 +69,7 @@ return (
             </div> */}
             {/* <div className={active_tab == 7 ? "active tab" : 'tab'} onClick={() => setactive_tab(7)}>
             Team Submissions
-            </div> */}
+            </div> */} 
           </RowFlex>
                 <Section gap={2} />
                 <Card
