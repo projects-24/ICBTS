@@ -58,7 +58,7 @@ useEffect(() => {
     console.log(err)
     setborder_summary_state ( () => !border_summary_state )
   })
-}, [d])
+}, [])
 
     const [dashboard_data, setdashboard_data] = useState(null)
     useEffect(() => {
