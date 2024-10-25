@@ -128,14 +128,14 @@ useEffect(() => {
                                     <Div>
                                         <Text funcss='headline' text={"Total Cases"} size='smaller' color='dark400' block bold />
                                         <RowFlex gap={0.5}>
-                                            <Text heading='h3' text={dashboard_data.Total_Cases} color='dark200' />
+                                            <Text heading='h3' text={dashboard_data.TotalCases} color='dark200' />
                                         </RowFlex>
                                     </Div>
                                 </RowFlex>
                             }
                         />
                     </Col>
- 
+
                     <Col sm={12} md={6} lg={3} funcss='padding' >
                         <Card
                             xl
@@ -146,7 +146,7 @@ useEffect(() => {
                                     <Div>
                                         <Text funcss='headline' text={"Completed Cases"} size='smaller' color='dark400' block bold />
                                         <RowFlex gap={0.5}>
-                                            <Text heading='h3' text={dashboard_data.Completed_Cases} color='dark200' />
+                                            <Text heading='h3' text={dashboard_data.CompletedCases} color='dark200' />
                                           
                                         </RowFlex>
                                     </Div>
@@ -165,7 +165,7 @@ useEffect(() => {
                                     <Div>
                                         <Text funcss='headline' text={"Duplicate Cases"} size='smaller' color='dark400' block bold />
                                         <RowFlex gap={0.5}>
-                                            <Text heading='h3' text={dashboard_data.Duplicate_Cases.length < 0 ? 0 : dashboard_data.Duplicate_Cases } color='dark200' />
+                                            <Text heading='h3' text={dashboard_data.DuplicateCases.length < 0 ? 0 : dashboard_data.DuplicateCases } color='dark200' />
                                           
                                         </RowFlex>
                                     </Div>
@@ -184,7 +184,7 @@ useEffect(() => {
                                     <Div>
                                         <Text funcss='headline' text={"Cases with errors"} size='smaller' color='dark400' block bold />
                                         <RowFlex gap={0.5}>
-                                            <Text heading='h3' text={dashboard_data.Error_Cases} color='dark200' />
+                                            <Text heading='h3' text={dashboard_data.CasesWithErrors} color='dark200' />
                                           
                                         </RowFlex>
                                     </Div>

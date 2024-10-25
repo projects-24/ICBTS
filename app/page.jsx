@@ -22,17 +22,17 @@ export default function Home() {
 
     const [error_message, seterror_message] = useState("")
 
-    const [api_online, setapi_online] = useState(true)
-  // useEffect(() => {
-  //     Axios.get(URI2)
-  //       .then((res) => {
-  //         setapi_online(true)
-  //       })
-  //       .catch(err => {
-  //         setmessage(err.message)
-  //         setapi_online( () => !api_online)
-  //       })
-  // } , [api_online])
+    const [api_online, setapi_online] = useState(false)
+  useEffect(() => {
+      Axios.get(URI2)
+        .then((res) => {
+          setapi_online(true)
+        })
+        .catch(err => {
+          setmessage(err.message)
+          setapi_online( () => !api_online)
+        })
+  } , [api_online])
 
     useEffect(() => {
       setTimeout(() => {
