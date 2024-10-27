@@ -70,6 +70,13 @@ useEffect(() => {
     })
     }, [])
     
+    const [updated, setupdated] = useState( () => {
+        const today = new Date();
+// Format the day and date
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const todayString = today.toLocaleDateString('en-US', options);
+return todayString
+    } )
 
 
     return (
@@ -102,10 +109,11 @@ useEffect(() => {
                             uppercase 
                             />
                             <Text 
-                            text='00:05'
+                            text={updated || ".."}
                             uppercase
                             block 
-                            heading='h2' 
+                            heading='h5'
+                            bold 
                             />
                            </div>
                           }
@@ -126,7 +134,7 @@ useEffect(() => {
                                 <RowFlex gap={1} funcss='padding-20' alignItems="flex-start">
                                     <Div content={<PiUsersDuotone size={15} className='text-dark' />} funcss={"central roundEdge  dark800"} raised height="2.5rem" width='2.5rem' />
                                     <Div>
-                                        <Text funcss='headline' text={"Total Cases"} size='smaller' color='dark400' block bold />
+                                        <Text  text={"Total Cases"} size='smaller' color='dark400' block bold />
                                         <RowFlex gap={0.5}>
                                             <Text heading='h3' text={dashboard_data.TotalCases} color='dark200' />
                                         </RowFlex>
@@ -144,7 +152,7 @@ useEffect(() => {
                                 <RowFlex gap={1} funcss='padding-20' alignItems="flex-start">
                                     <Div content={<PiChecks size={15} className='text-dark'/>} funcss={"central roundEdge  dark800"} raised height="2.5rem" width='2.5rem' />
                                     <Div>
-                                        <Text funcss='headline' text={"Completed Cases"} size='smaller' color='dark400' block bold />
+                                        <Text  text={"Completed Cases"} size='smaller' color='dark400' block bold />
                                         <RowFlex gap={0.5}>
                                             <Text heading='h3' text={dashboard_data.CompletedCases} color='dark200' />
                                           
@@ -163,7 +171,7 @@ useEffect(() => {
                                 <RowFlex gap={1} funcss='padding-20' alignItems="flex-start">
                                     <Div content={<PiCopy size={15} className='text-dark' />} funcss={"central roundEdge  dark800"} raised height="2.5rem" width='2.5rem' />
                                     <Div>
-                                        <Text funcss='headline' text={"Duplicate Cases"} size='smaller' color='dark400' block bold />
+                                        <Text  text={"Duplicate Cases"} size='smaller' color='dark400' block bold />
                                         <RowFlex gap={0.5}>
                                             <Text heading='h3' text={dashboard_data.DuplicateCases.length < 0 ? 0 : dashboard_data.DuplicateCases } color='dark200' />
                                           
@@ -182,7 +190,7 @@ useEffect(() => {
                                 <RowFlex gap={1} funcss='padding-20' alignItems="flex-start">
                                     <Div content={<PiTrash size={15} className='text-dark' />} funcss={"central roundEdge  dark800"} raised height="2.5rem" width='2.5rem' />
                                     <Div>
-                                        <Text funcss='headline' text={"Cases with errors"} size='smaller' color='dark400' block bold />
+                                        <Text  text={"Cases with errors"} size='smaller' color='dark400' block bold />
                                         <RowFlex gap={0.5}>
                                             <Text heading='h3' text={dashboard_data.CasesWithErrors} color='dark200' />
                                           

@@ -17,7 +17,7 @@ const Chart = dynamic(()=>import("@/components/Graph") ,{ssr:false})
 const GraphChart = dynamic(() => import("@/components/RangeGraph"), { ssr: false })
 import Input from 'funuicss/ui/input/Input' 
 import RowFlex from 'funuicss/ui/specials/RowFlex'
-import { PiEye } from 'react-icons/pi';
+import { PiCurrencyDollar, PiDiamondsFour, PiEye } from 'react-icons/pi';
 import Circle from "funuicss/ui/specials/Circle"
 import Div from "funuicss/ui/div/Div"
 import {PiArrowDown, PiArrowUp, PiUsersDuotone,  PiVoicemailDuotone} from 'react-icons/pi'
@@ -92,28 +92,91 @@ const HandleAllRecordsQuery = (year_month) => {
     })
     .then(res =>  GetTransportSummary({'year' : year ,  'month' : month}))
 }
+
+const [dashboard_data, setdashboard_data] = useState(null)
+useEffect(() => {
+Axios.get(URI2 + "/summary")
+.then(res => {
+    let res_data = res.data 
+    setdashboard_data(res_data)
+    console.log(res_data)
+})
+}, [])
+
+const [updated, setupdated] = useState( () => {
+    const today = new Date();
+// Format the day and date
+const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+const todayString = today.toLocaleDateString('en-US', options);
+return todayString
+} )
+
+
 return (
         <div>
             <Navigation title={"Statistics"} active={2}/>
             <MainContent>
                 <div className='row'>
-                {/* <Col sm={12} md={6} lg={3} funcss='padding' >
+                {
+                    dashboard_data &&
+                    <Grid>
+               
+              
+                    <Col sm={12} md={4} lg={4} funcss='padding' >
                         <Card
                             xl
                             funcss='hover-up borderLeftPrimary'
                             body={
                                 <RowFlex gap={1} funcss='padding-20' alignItems="flex-start">
-                                    <Div content={<PiUsersDuotone size={15} className='text-dark' />} funcss={"central roundEdge  dark800"} raised height="2.5rem" width='2.5rem' />
+                                    <Div content={<PiDiamondsFour size={15} className='text-dark' />} funcss={"central roundEdge  dark800"} raised height="2.5rem" width='2.5rem' />
                                     <Div>
-                                        <Text funcss='headline' text={"Total Cases"} size='smaller' color='dark400' block bold />
+                                        <Text funcss='headline' text={"Total Commodities"} size='smaller' color='dark400' block bold />
                                         <RowFlex gap={0.5}>
-                                            <Text heading='h3' text={0} color='dark200' />
+                                            <Text heading='h3' text={dashboard_data.TotalCommodities} color='dark200' />
                                         </RowFlex>
                                     </Div>
                                 </RowFlex>
                             }
                         />
-                    </Col> */}
+                    </Col>
+
+                    <Col sm={12} md={4} lg={4} funcss='padding' >
+                        <Card
+                            xl
+                            funcss='hover-up borderLeftSuccess'
+                            body={
+                                <RowFlex gap={1} funcss='padding-20' alignItems="flex-start">
+                                    <Div content={<PiCurrencyDollar size={15} className='text-dark'/>} funcss={"central roundEdge  dark800"} raised height="2.5rem" width='2.5rem' />
+                                    <Div>
+                                        <Text funcss='headline' text={"Total Trade"} size='smaller' color='dark400' block bold />
+                                        <RowFlex gap={0.5}>
+                                            <Text heading='h3' text={dashboard_data.TotalTrade} color='dark200' />
+                                          
+                                        </RowFlex>
+                                    </Div>
+                                </RowFlex>
+                            }
+                        />
+                    </Col>
+
+                    <Col sm={12} md={4} lg={4} funcss='padding' >
+                    <div>
+                                 <Text 
+                            text='Last Updated'
+                            funcss='headline'
+                            uppercase 
+                            />
+                            <Text 
+                            text={updated || ".."}
+                            uppercase
+                            block 
+                            heading='h5'
+                            bold 
+                            />
+                         </div>
+                    </Col>
+                    </Grid>
+                }
                 </div>
                 <Grid>
                     <Col sm={12} md={12} lg={12} funcss={"padding"}>

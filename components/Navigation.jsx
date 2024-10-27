@@ -32,13 +32,13 @@ const Navigation = ({title , active}) => {
             "text" : "Statistics" ,
             "isActive" : active == 2 ? true : false
         }
-        ,
-        {
-            "route" : "/validation" ,
-            "icon" : <PiChecks /> ,
-            "text" : "Validation" ,
-            "isActive" : active == 3 ? true : false
-        }
+        // ,
+        // {
+        //     "route" : "/validation" ,
+        //     "icon" : <PiChecks /> ,
+        //     "text" : "Validation" ,
+        //     "isActive" : active == 3 ? true : false
+        // }
 
     ]
     // const HelpSectionLinks = [
