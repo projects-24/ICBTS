@@ -104,7 +104,7 @@ return todayString
                             dashboard_data && 
                            <div>
                             <Text 
-                            text='Last Updated'
+                            text='Last Updated : 12:09AM'
                             funcss='headline'
                             uppercase 
                             />
